@@ -17664,7 +17664,7 @@ const mediasoupClient = require('mediasoup-client')
 
 const roomName = window.location.pathname.split('/')[2]
 
-const socket = io(`http://3ea8-105-113-103-223.ngrok-free.app/?room=${roomName}`);
+const socket = io(`https://3ea8-105-113-103-223.ngrok-free.app/?room=${roomName}`);
 console.log(socket, roomName)
 
 socket.on('connection-success', ({ socketId }) => {
