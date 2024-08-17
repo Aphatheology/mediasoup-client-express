@@ -4,7 +4,8 @@ const mediasoupClient = require('mediasoup-client')
 
 const roomName = window.location.pathname.split('/')[2]
 
-const socket = io(`https://api.que.bot/?room=${roomName}`);
+// const socket = io(`https://api.que.bot/?room=${roomName}`);
+const socket = io(`192.168.1.139:4400/?room=${roomName}`);
 console.log(socket, roomName)
 
 socket.on('connection-success', ({ socketId }) => {
@@ -269,7 +270,7 @@ socket.on('new-producer', ({ producerId }) => signalNewConsumerTransport(produce
 
 const getProducers = () => {
   socket.emit('getProducers', producerIds => {
-    console.log(producerIds)
+    console.log("producer ids: ", producerIds)
     // for each of the producer create a consumer
     // producerIds.forEach(id => signalNewConsumerTransport(id))
     producerIds.forEach(signalNewConsumerTransport)
