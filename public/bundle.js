@@ -17664,7 +17664,7 @@ const mediasoupClient = require('mediasoup-client')
 
 const roomName = window.location.pathname.split('/')[2]
 
-const socket = io(`https://3ea8-105-113-103-223.ngrok-free.app/?room=${roomName}`);
+const socket = io(`https://api.que.bot/?room=${roomName}`);
 console.log(socket, roomName)
 
 socket.on('connection-success', ({ socketId }) => {
@@ -18009,4 +18009,5 @@ socket.on('producer-closed', ({ remoteProducerId }) => {
   // remove the video div element
   videoContainer.removeChild(document.getElementById(`td-${remoteProducerId}`))
 })
+
 },{"mediasoup-client":57,"socket.io-client":70}]},{},[80]);
