@@ -17664,9 +17664,9 @@ const mediasoupClient = require('mediasoup-client')
 
 const roomName = window.location.pathname.split('/')[2]
 
-// const socket = io(`https://api.que.bot/?room=${roomName}`);
+const socket = io(`https://api.que.bot/?room=${roomName}`);
 // const socket = io(`192.168.1.139:4400/?room=${roomName}`);
-const socket = io(`https://media-nest.onrender.com/?room=${roomName}`);
+// const socket = io(`https://media-nest.onrender.com/?room=${roomName}`);
 console.log(socket, roomName)
 
 socket.on('connection-success', ({ socketId }) => {
@@ -17952,7 +17952,9 @@ const connectRecvTransport = async (consumerTransport, remoteProducerId, serverC
       return
     }
 
-    console.log(`Consumer Params ${params}`)
+    // console.log(`Consumer Params ${params}`)
+    console.log('Consumer Params ', { ...params });
+
     // then consume with the local consumer transport
     // which creates a consumer
     const consumer = await consumerTransport.consume({
