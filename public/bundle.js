@@ -17671,6 +17671,30 @@ console.log(socket, roomName)
 
 socket.on('connection-success', ({ socketId }) => {
   console.log(socketId)
+  const listenIps = [];
+  if (typeof window === 'undefined') {
+    const networkInterfaces = os.networkInterfaces();
+
+    if (networkInterfaces) {
+      for (const addresses of Object.values(networkInterfaces)) {
+        addresses.forEach((address) => {
+          if (address.family === 'IPv4') {
+            listenIps.push({ ip: address.address, announcedIp: null });
+          } else if (
+            address.family === 'IPv6' &&
+            address.address[0] !== 'f'
+          ) {
+            listenIps.push({ ip: address.address, announcedIp: null });
+          }
+        });
+      }
+    }
+  }
+
+  if (listenIps.length === 0) {
+    listenIps.push({ ip: '127.0.0.1', announcedIp: null });
+  }
+  console.log(listenIps)
   getLocalStream()
 })
 
