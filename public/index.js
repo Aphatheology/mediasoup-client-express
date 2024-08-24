@@ -7,7 +7,8 @@ const roomName = window.location.pathname.split('/')[2]
 // const socket = io(`https://api.que.bot/?room=${roomName}`);
 // const socket = io(`192.168.1.139:4400/?room=${roomName}`);
 // const socket = io(`https://media-nest-1.onrender.com/?room=${roomName}`);
-const socket = io(`https://3.127.139.75/?room=${roomName}`);
+// const socket = io(`https://staging.que.bot/?room=${roomName}`);
+const socket = io("/mediasoup")
 
 console.log(socket, roomName)
 
